@@ -1,0 +1,44 @@
+version: '2'
+services:
+  bootnode-1:
+    build:
+      context: ./gur-client
+      dockerfile: Dockerfile
+    # restart: on-failure
+    command: ./bootnode.sh
+    volumes:
+      - ./files/bootnode.sh:/root/bootnode.sh
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"
+  transaction-relay:
+    build:
+      context: ./gur-client
+      dockerfile: Dockerfile
+    # restart: on-failure
+    command: ./transaction-relay.sh
+    volumes:
+      - ./files/transaction-relay.sh:/root/transaction-relay.sh
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - bootnode-1
+    ports:
+      - "9595:9595"
+  miner:
+    build:
+      context: ./gur-client
+      dockerfile: Dockerfile
+    # restart: on-failure
+    command: ./miner.sh
+    volumes:
+      - ethash:/root/.ethash
+      - ./files/miner.sh:/root/miner.sh
+      - ./files/password:/root/files/password:ro
+      - ./files/keystore:/root/ur_data/keystore:rw
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - bootnode-1
+volumes:
+    ethash:
+      driver: local
