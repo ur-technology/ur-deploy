@@ -12,6 +12,11 @@ services:
     ports:
       - "19595:19595"
       - "19595:19595/udp"
+    networks:
+      mining:
+        aliases:
+          - bootnode-1
+
   transaction-relay:
     build:
       context: ./gur-client
@@ -23,6 +28,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
     links:
       - bootnode-1
+    networks:
+      mining:
+        aliases:
+          - transaction-relay
     ports:
       - "9595:9595"
   miner:
@@ -39,6 +48,12 @@ services:
       - /etc/localtime:/etc/localtime:ro
     links:
       - bootnode-1
+    networks:
+      - mining
+
 volumes:
     ethash:
       driver: local
+
+networks:
+  mining:
