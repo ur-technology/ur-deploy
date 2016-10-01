@@ -8,10 +8,12 @@ services:
     command: ./bootnode.sh
     volumes:
       - ./files/bootnode.sh:/root/bootnode.sh
+      - ./files/attach.sh:/root/attach.sh
       - /etc/localtime:/etc/localtime:ro
-    ports:
-      - "19595:19595"
-      - "19595:19595/udp"
+    # ports:
+    #   - "19595"
+    #   - "19595/udp"
+    #   - "9595"
     networks:
       mining:
         aliases:
@@ -25,6 +27,7 @@ services:
     command: ./transaction-relay.sh
     volumes:
       - ./files/transaction-relay.sh:/root/transaction-relay.sh
+      - ./files/attach.sh:/root/attach.sh
       - /etc/localtime:/etc/localtime:ro
     links:
       - bootnode-1
@@ -33,7 +36,10 @@ services:
         aliases:
           - transaction-relay
     ports:
-      - "9595:9595"
+      # - "19595"
+      # - "19595/udp"
+      - "9595"
+
   miner:
     build:
       context: ./gur-client
@@ -43,6 +49,7 @@ services:
     volumes:
       - ethash:/root/.ethash
       - ./files/miner.sh:/root/miner.sh
+      - ./files/attach.sh:/root/attach.sh
       - ./files/password:/root/files/password:ro
       - ./files/keystore:/root/ur_data/keystore:rw
       - /etc/localtime:/etc/localtime:ro
@@ -50,6 +57,10 @@ services:
       - bootnode-1
     networks:
       - mining
+    # ports:
+    #   - "19595"
+    #   - "19595/udp"
+    #   - "9595"
 
 volumes:
     ethash:

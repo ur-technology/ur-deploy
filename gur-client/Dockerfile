@@ -24,3 +24,4 @@ RUN git clone https://github.com/urcapital/go-ur.git; make -C go-ur gur # figure
 
 EXPOSE 9595
 EXPOSE 19595
+EXPOSE 19595/udp
