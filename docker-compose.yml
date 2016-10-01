@@ -13,7 +13,6 @@ services:
     # ports:
     #   - "19595"
     #   - "19595/udp"
-    #   - "9595"
     networks:
       mining:
         aliases:
@@ -36,8 +35,6 @@ services:
         aliases:
           - transaction-relay
     ports:
-      # - "19595"
-      # - "19595/udp"
       - "9595"
 
   miner:
@@ -57,10 +54,6 @@ services:
       - bootnode-1
     networks:
       - mining
-    # ports:
-    #   - "19595"
-    #   - "19595/udp"
-    #   - "9595"
 
 volumes:
     ethash:

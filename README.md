@@ -15,7 +15,9 @@ By default this will create:
 To access the transaction relay container:
 
 ```
-curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1001}' localhost:9595
+HOST_AND_PORT=$(docker port urdeploy_transaction-relay_1 9595)
+PORT=${HOST_AND_PORT##*:}
+curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1001}' localhost:$PORT
 ```
 
 ##### Scaling the number of nodes/containers in the cluster
@@ -28,9 +30,15 @@ Will scale the number of miner nodes upwards (replace 3 with however many nodes
 you prefer). These nodes will connect to the P2P network (via the bootnode nodes)
 by default.
 
+#### TODO:
+
+* refer to hosts by domain name instead of by ip address (eg, bootnode1.ur.technology && bootnode2.ur.capital)
+* add UR block explorer container (built on top of gur-client image)
+* refer to hosts
+* replace networkid with an environment variable, so 1=production, 101=testing on live network, 1001=testing on docker
+
+
 #### Coming Soon
 
-* 1 UR block explorer container (with a Web UI to view activity in the cluster)
-* * To access the UR block explorer Web UI: `open http://$(docker-machine ip default):3000`
 * 1 UR netstats container (with a Web UI to view activity in the cluster)
 * * To access the UR netstats Web UI: `open http://$(docker-machine ip default):3000`

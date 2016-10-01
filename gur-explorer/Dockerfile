@@ -25,3 +25,19 @@ RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur # fi
 EXPOSE 9595
 EXPOSE 19595
 EXPOSE 19595/udp
+
+
+# TODO: figure out how to build on top of gur-client
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl && \
+    curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
+    apt-get install -y nodejs python bower
+
+RUN git clone https://github.com/ur-technology/explorer.git && \
+  cd explorer && \
+  npm install -g bower
+  npm install --unsafe-perm && \
+  bower install --allow-root; cd
+
+EXPOSE 8000
