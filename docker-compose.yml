@@ -1,63 +1,75 @@
 version: '2'
 services:
-  bootnode-1:
+  bootnode1:
     build:
-      context: ./gur-client
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./gur-client/Dockerfile
     # restart: on-failure
-    command: ./bootnode.sh
+    command: ./bootnode1.sh
     volumes:
-      - ./files/bootnode.sh:/root/bootnode.sh
+      - ./files/bootnode1.sh:/root/bootnode1.sh
       - ./files/attach.sh:/root/attach.sh
+      - ./files/params.sh:/root/params.sh
       - /etc/localtime:/etc/localtime:ro
-    # ports:
-    #   - "19595"
-    #   - "19595/udp"
-    networks:
-      mining:
-        aliases:
-          - bootnode-1
+  #
+  # bootnode2:
+  #   build:
+  #     context: .
+  #     dockerfile: ./gur-client/Dockerfile
+  #   # restart: on-failure
+  #   command: ./bootnode2.sh
+  #   volumes:
+  #     - ./files/bootnode2.sh:/root/bootnode2.sh
+  #     - ./files/attach.sh:/root/attach.sh
+  #     - ./files/params.sh:/root/params.sh
+  #     - /etc/localtime:/etc/localtime:ro
+  #
+  # transaction-relay:
+  #   build:
+  #     context: .
+  #     dockerfile: ./gur-client/Dockerfile
+  #   # restart: on-failure
+  #   command: ./transaction-relay.sh
+  #   volumes:
+  #     - ./files/transaction-relay.sh:/root/transaction-relay.sh
+  #     - ./files/attach.sh:/root/attach.sh
+  #     - ./files/params.sh:/root/params.sh
+  #     - /etc/localtime:/etc/localtime:ro
+  #   ports:
+  #     - "9595"
+  #
+  # miner:
+  #   build:
+  #     context: .
+  #     dockerfile: ./gur-client/Dockerfile
+  #   # restart: on-failure
+  #   command: ./miner.sh
+  #   volumes:
+  #     - ethash:/root/.ethash
+  #     - ./files/miner.sh:/root/miner.sh
+  #     - ./files/attach.sh:/root/attach.sh
+  #     - ./files/params.sh:/root/params.sh
+  #     - ./files/password:/root/files/password:ro
+  #     - ./files/keystore:/root/ur_data/keystore:rw
+  #     - /etc/localtime:/etc/localtime:ro
 
-  transaction-relay:
+  explorer:
     build:
-      context: ./gur-client
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./gur-explorer/Dockerfile
     # restart: on-failure
-    command: ./transaction-relay.sh
-    volumes:
-      - ./files/transaction-relay.sh:/root/transaction-relay.sh
-      - ./files/attach.sh:/root/attach.sh
-      - /etc/localtime:/etc/localtime:ro
-    links:
-      - bootnode-1
-    networks:
-      mining:
-        aliases:
-          - transaction-relay
-    ports:
-      - "9595"
-
-  miner:
-    build:
-      context: ./gur-client
-      dockerfile: Dockerfile
-    # restart: on-failure
-    command: ./miner.sh
+    command: ./explorer.sh
     volumes:
       - ethash:/root/.ethash
-      - ./files/miner.sh:/root/miner.sh
+      - ./files/explorer.sh:/root/explorer.sh
       - ./files/attach.sh:/root/attach.sh
+      - ./files/params.sh:/root/params.sh
       - ./files/password:/root/files/password:ro
       - ./files/keystore:/root/ur_data/keystore:rw
       - /etc/localtime:/etc/localtime:ro
-    links:
-      - bootnode-1
-    networks:
-      - mining
+    ports:
+      - "8080"
 
 volumes:
     ethash:
       driver: local
-
-networks:
-  mining:

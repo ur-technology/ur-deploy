@@ -32,10 +32,14 @@ by default.
 
 #### TODO:
 
-* refer to hosts by domain name instead of by ip address (eg, bootnode1.ur.technology && bootnode2.ur.capital)
 * add UR block explorer container (built on top of gur-client image)
-* refer to hosts
-* replace networkid with an environment variable, so 1=production, 101=testing on live network, 1001=testing on docker
+* switch networkid to 1
+* download release of gur from github
+
+* install google container engine GKE
+* deploy deis helm
+deis create ur-money --no-remote
+deis pull gcr.io/google-project-id/gur-client:latest -a  ur-money
 
 
 #### Coming Soon

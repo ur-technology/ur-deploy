@@ -3,25 +3,21 @@ FROM ubuntu:16.04
 # Installing the 'apt-utils' package gets rid of the 'debconf: delaying package configuration, since apt-utils is not installed'
 # error message when installing any other package with the apt-get package manager.
 RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils && \
-  rm -rf /var/lib/apt/lists/*
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y \
     build-essential \
     git \
     golang \
-    libgmp3-dev && \
-  rm -rf /var/lib/apt/lists/*
+    libgmp3-dev \
+    inetutils-ping \
+    dnsutils
 
 WORKDIR /root
-RUN mkdir .ssh ur_data
-RUN chmod 700 .ssh
-ADD ./id_rsa_ur_capital.pub .ssh/authorized_keys
-RUN chmod 600 .ssh/authorized_keys
+RUN mkdir ur_data
 
-RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur # figure out how to build this outside of docker and copy it in
+# RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur && cp ./go-ur/build/bin/gur /usr/bin
+ADD ./files/bin/gur /usr/bin/gur
 
-EXPOSE 9595
-EXPOSE 19595
-EXPOSE 19595/udp
+EXPOSE 9595 19595 19595/udp
