@@ -11,47 +11,53 @@ services:
       - ./files/attach.sh:/root/attach.sh
       - ./files/params.sh:/root/params.sh
       - /etc/localtime:/etc/localtime:ro
-  #
-  # bootnode2:
-  #   build:
-  #     context: .
-  #     dockerfile: ./gur-client/Dockerfile
-  #   # restart: on-failure
-  #   command: ./bootnode2.sh
-  #   volumes:
-  #     - ./files/bootnode2.sh:/root/bootnode2.sh
-  #     - ./files/attach.sh:/root/attach.sh
-  #     - ./files/params.sh:/root/params.sh
-  #     - /etc/localtime:/etc/localtime:ro
-  #
-  # transaction-relay:
-  #   build:
-  #     context: .
-  #     dockerfile: ./gur-client/Dockerfile
-  #   # restart: on-failure
-  #   command: ./transaction-relay.sh
-  #   volumes:
-  #     - ./files/transaction-relay.sh:/root/transaction-relay.sh
-  #     - ./files/attach.sh:/root/attach.sh
-  #     - ./files/params.sh:/root/params.sh
-  #     - /etc/localtime:/etc/localtime:ro
-  #   ports:
-  #     - "9595"
-  #
-  # miner:
-  #   build:
-  #     context: .
-  #     dockerfile: ./gur-client/Dockerfile
-  #   # restart: on-failure
-  #   command: ./miner.sh
-  #   volumes:
-  #     - ethash:/root/.ethash
-  #     - ./files/miner.sh:/root/miner.sh
-  #     - ./files/attach.sh:/root/attach.sh
-  #     - ./files/params.sh:/root/params.sh
-  #     - ./files/password:/root/files/password:ro
-  #     - ./files/keystore:/root/ur_data/keystore:rw
-  #     - /etc/localtime:/etc/localtime:ro
+
+  bootnode2:
+    build:
+      context: .
+      dockerfile: ./gur-client/Dockerfile
+    # restart: on-failure
+    command: ./bootnode2.sh
+    volumes:
+      - ./files/bootnode2.sh:/root/bootnode2.sh
+      - ./files/attach.sh:/root/attach.sh
+      - ./files/params.sh:/root/params.sh
+      - /etc/localtime:/etc/localtime:ro
+
+  transaction-relay:
+    build:
+      context: .
+      dockerfile: ./gur-client/Dockerfile
+    # restart: on-failure
+    command: ./transaction-relay.sh
+    volumes:
+      - ./files/transaction-relay.sh:/root/transaction-relay.sh
+      - ./files/attach.sh:/root/attach.sh
+      - ./files/params.sh:/root/params.sh
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "9595:9595"
+    depends_on:
+      - bootnode1
+      - bootnode2
+
+  miner:
+    build:
+      context: .
+      dockerfile: ./gur-client/Dockerfile
+    # restart: on-failure
+    command: ./miner.sh
+    volumes:
+      - ethash:/root/.ethash
+      - ./files/miner.sh:/root/miner.sh
+      - ./files/attach.sh:/root/attach.sh
+      - ./files/params.sh:/root/params.sh
+      - ./files/password:/root/files/password:ro
+      - ./files/keystore:/root/ur_data/keystore:rw
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - bootnode1
+      - bootnode2
 
   explorer:
     build:
@@ -60,15 +66,12 @@ services:
     # restart: on-failure
     command: ./explorer.sh
     volumes:
-      - ethash:/root/.ethash
-      - ./files/explorer.sh:/root/explorer.sh
-      - ./files/attach.sh:/root/attach.sh
-      - ./files/params.sh:/root/params.sh
-      - ./files/password:/root/files/password:ro
-      - ./files/keystore:/root/ur_data/keystore:rw
+      - ./files/explorer.sh:/home/explorer-user/explorer.sh
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8080"
+    depends_on:
+      - transaction-relay
 
 volumes:
     ethash:

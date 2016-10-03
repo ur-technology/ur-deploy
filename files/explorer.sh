@@ -1,7 +1,14 @@
 #!/bin/bash
 
-. ./params.sh
+TRANSACTION_RELAY_IP_ADDRESS=$(nslookup transaction-relay | awk '/./{line=$0} END{print line}' | awk '{print $2}')
+echo "TRANSACTION_RELAY_IP_ADDRESS=$TRANSACTION_RELAY_IP_ADDRESS"
 set -eo pipefail
-gur $COMMON_GUR_OPTIONS --rpcapi "eth,web3" --rpccorsdomain="http://localhost:8000" --rpc --rpcaddr=localhost &
-
-cd explorer; npm start
+cd explorer
+npm install bower
+# TODO: figure out how to get this to work when deployed
+# sed -i "s/localhost/$TRANSACTION_RELAY_IP_ADDRESS/g" app/app.js
+sed -i 's/localhost/0.0.0.0/g' package.json
+echo "2 ******************************"
+grep start package.json
+npm install
+npm start
