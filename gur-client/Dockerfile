@@ -14,8 +14,12 @@ RUN apt-get update && \
     inetutils-ping \
     dnsutils
 
-WORKDIR /root
+RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
+USER deploy
+WORKDIR /home/deploy
+
 RUN mkdir ur_data
+RUN mkdir .ethash
 
 # RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur && cp ./go-ur/build/bin/gur /usr/bin
 ADD ./files/bin/gur /usr/bin/gur
