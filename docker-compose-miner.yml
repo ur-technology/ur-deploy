@@ -23,6 +23,3 @@ services:
       - ./files/password:/home/deploy/files/password:ro
       - ./files/keystore:/home/deploy/ur_data/keystore:rw
       - /etc/localtime:/etc/localtime:ro
-    depends_on:
-      - bootnode1
-      - bootnode2

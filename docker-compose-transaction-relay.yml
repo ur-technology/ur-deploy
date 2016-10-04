@@ -20,3 +20,5 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "9595:9595"
+      - "19595:19595"
+      - "19595:19595/udp"

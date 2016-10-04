@@ -19,3 +19,6 @@ services:
       - ../files/attach.sh:/home/deploy/attach.sh
       - ../files/params.sh:/home/deploy/params.sh
       - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"

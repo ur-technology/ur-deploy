@@ -18,5 +18,3 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8080"
-    depends_on:
-      - transaction-relay
