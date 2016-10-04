@@ -10,12 +10,12 @@ services:
     container_name: bootnode2
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ../gur-client/Dockerfile
     # restart: on-failure
     hostname: bootnode2
     command: ./bootnode2.sh
     volumes:
-      - ./files/bootnode2.sh:/home/deploy/bootnode2.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/params.sh:/home/deploy/params.sh
+      - ../files/bootnode2.sh:/home/deploy/bootnode2.sh
+      - ../files/attach.sh:/home/deploy/attach.sh
+      - ../files/params.sh:/home/deploy/params.sh
       - /etc/localtime:/etc/localtime:ro
