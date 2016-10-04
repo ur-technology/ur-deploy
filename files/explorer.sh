@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TRANSACTION_RELAY_IP_ADDRESS=$(nslookup transaction-relay-1 | awk '/./{line=$0} END{print line}' | awk '{print $2}')
+TRANSACTION_RELAY_IP_ADDRESS=$(grep transaction-relay-1 /etc/hosts | awk '{print $1}')
 echo "TRANSACTION_RELAY_IP_ADDRESS=$TRANSACTION_RELAY_IP_ADDRESS"
 set -eo pipefail
 cd explorer
