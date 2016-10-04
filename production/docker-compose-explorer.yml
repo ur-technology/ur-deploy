@@ -1,0 +1,22 @@
+version: '2'
+services:
+  explorer:
+    extra_hosts:
+      - "transaction-relay-1:10.134.11.121"
+      - "miner-1:10.134.11.120"
+      - "explorer:10.134.11.100"
+      - "bootnode2:10.134.10.242"
+      - "bootnode1:10.134.9.248"
+    container_name: explorer
+    build:
+      context: .
+      dockerfile: ./gur-explorer/Dockerfile
+    # restart: on-failure
+    command: ./explorer.sh
+    volumes:
+      - ./files/explorer.sh:/home/deploy/explorer.sh
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080"
+    depends_on:
+      - transaction-relay
