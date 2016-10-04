@@ -57,3 +57,20 @@ deis pull gcr.io/google-project-id/gur-client:latest -a  ur-money
 
 * 1 UR netstats container (with a Web UI to view activity in the cluster)
 * * To access the UR netstats Web UI: `open http://$(docker-machine ip default):3000`
+
+
+#### Notes
+
+* TODO: create snapshot of droplets
+
+```
+git clone ....
+
+cd ur-deploy
+git pull
+curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+docker-compose -f docker-compose-bootnode2.yml up -d
+
+
+```
