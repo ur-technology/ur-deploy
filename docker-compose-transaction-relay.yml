@@ -20,6 +20,3 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "9595:9595"
-    depends_on:
-      - bootnode1
-      - bootnode2
