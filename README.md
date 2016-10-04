@@ -1,5 +1,7 @@
 # UR Deployment
 
+#### Running a cluster
+
 To run an UR Docker cluster run the following:
 
 ```
@@ -12,6 +14,8 @@ By default this will create:
 * 1 UR transaction relay container (which connects to the bootnode containers)
 * 1 UR miner container (which connect to the bootnode containers)
 
+#### Transaction Relay container
+
 To access the transaction relay container:
 
 ```
@@ -19,8 +23,15 @@ PORT_MAPPING=$(docker port urdeploy_transaction-relay_1 9595)
 PORT=${PORT_MAPPING##*:}
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1001}' localhost:$PORT
 ```
+#### start/stop minining
 
-##### Scaling the number of nodes/containers in the cluster
+`docker-compose exec miner /home/deploy/start-mining.sh`
+
+and
+
+`docker-compose exec miner /home/deploy/stop-mining.sh`
+
+#### Scaling the number of nodes/containers in the cluster
 
 ```
 docker-compose scale miner=3

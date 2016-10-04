@@ -52,6 +52,8 @@ services:
     volumes:
       # - ethash:/home/deploy/.ethash
       - ./files/miner.sh:/home/deploy/miner.sh
+      - ./files/start-mining.sh:/home/deploy/start-mining.sh
+      - ./files/stop-mining.sh:/home/deploy/stop-mining.sh
       - ./files/attach.sh:/home/deploy/attach.sh
       - ./files/params.sh:/home/deploy/params.sh
       - ./files/password:/home/deploy/files/password:ro
