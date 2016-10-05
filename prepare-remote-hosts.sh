@@ -7,6 +7,6 @@ ALL_NODES="bootnode2"
 for h in $ALL_NODES
 do
   scp -F ssh_config -o StrictHostKeyChecking=no ~/.ssh/id_rsa_ur_capital $h:/root/.ssh/id_rsa
-  scp -F ssh_config -o StrictHostKeyChecking=no ./prepare-local-host $h:
+  scp -F ssh_config -o StrictHostKeyChecking=no ./prepare-local-host.sh $h:
   ssh -F ssh_config -o StrictHostKeyChecking=no $h ./prepare-local-host.sh
 done
