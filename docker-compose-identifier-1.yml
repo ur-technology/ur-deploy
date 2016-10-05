@@ -1,0 +1,22 @@
+version: '2'
+services:
+  identifier-1:
+    extra_hosts:
+      - "bootnode-1:10.134.9.248"
+      - "bootnode-2:10.134.10.242"
+      - "explorer-1:10.134.11.100"
+      - "identifier-1:10.134.22.110"
+      - "miner-1:10.134.11.120"
+      - "rpc-1:10.134.11.121"
+    container_name: identifier-1
+    hostname: identifier-1
+    build:
+      context: .
+      dockerfile: ./gur-identifier/Dockerfile
+    # restart: on-failure
+    command: ./identifier.sh
+    volumes:
+      - ./files/identifier.sh:/home/deploy/identifier.sh
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080"

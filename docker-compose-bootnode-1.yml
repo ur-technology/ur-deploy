@@ -1,0 +1,25 @@
+version: '2'
+services:
+  bootnode-1:
+    extra_hosts:
+      - "bootnode-1:10.134.9.248"
+      - "bootnode-2:10.134.10.242"
+      - "explorer-1:10.134.11.100"
+      - "identifier-1:10.134.22.110"
+      - "miner-1:10.134.11.120"
+      - "rpc-1:10.134.11.121"
+    container_name: bootnode-1
+    hostname: bootnode-1
+    build:
+      context: .
+      dockerfile: ./gur-client/Dockerfile
+    # restart: on-failure
+    command: ./bootnode.sh
+    volumes:
+      - ./files/bootnode.sh:/home/deploy/bootnode.sh
+      - ./files/attach.sh:/home/deploy/attach.sh
+      - ./files/gur-options.sh:/home/deploy/gur-options.sh
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"

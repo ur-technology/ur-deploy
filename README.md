@@ -19,7 +19,7 @@ By default this will create:
 To access the transaction relay container:
 
 ```
-PORT_MAPPING=$(docker port urdeploy_transaction-relay_1 9595)
+PORT_MAPPING=$(docker port urdeploy_rpc-1 9595)
 PORT=${PORT_MAPPING##*:}
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1001}' localhost:$PORT
 ```
@@ -70,7 +70,7 @@ cd ur-deploy
 git pull
 curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-docker-compose -f docker-compose-bootnode2.yml up -d
+docker-compose -f docker-compose-bootnode-2.yml up -d
 
 
 ```

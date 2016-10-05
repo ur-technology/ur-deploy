@@ -1,17 +1,23 @@
-Host bootnode1
+Host bootnode-1
     HostName 107.170.203.6
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host bootnode2
+Host bootnode-2
     HostName 107.170.250.209
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host explorer
+Host explorer-1
     HostName 107.170.229.102
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host identifier-1
+    HostName 104.131.154.132
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
@@ -22,7 +28,7 @@ Host miner-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host transaction-relay-1
+Host rpc-1
     HostName 104.131.130.169
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital

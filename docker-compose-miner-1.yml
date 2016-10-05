@@ -1,13 +1,15 @@
 version: '2'
 services:
-  miner:
+  miner-1:
     extra_hosts:
-      - "transaction-relay-1:10.134.11.121"
+      - "bootnode-1:10.134.9.248"
+      - "bootnode-2:10.134.10.242"
+      - "explorer-1:10.134.11.100"
+      - "identifier-1:10.134.22.110"
       - "miner-1:10.134.11.120"
-      - "explorer:10.134.11.100"
-      - "bootnode2:10.134.10.242"
-      - "bootnode1:10.134.9.248"
-    container_name: miner
+      - "rpc-1:10.134.11.121"
+    container_name: miner-1
+    hostname: miner-1
     build:
       context: .
       dockerfile: ./gur-client/Dockerfile
@@ -19,7 +21,7 @@ services:
       - ./files/start-mining.sh:/home/deploy/start-mining.sh
       - ./files/stop-mining.sh:/home/deploy/stop-mining.sh
       - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/params.sh:/home/deploy/params.sh
+      - ./files/gur-options.sh:/home/deploy/gur-options.sh
       - ./files/password:/home/deploy/files/password:ro
       - ./files/keystore:/home/deploy/ur_data/keystore:rw
       - /etc/localtime:/etc/localtime:ro
