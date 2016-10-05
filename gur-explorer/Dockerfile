@@ -11,7 +11,9 @@ RUN apt-get update && \
       curl \
       dnsutils \
       git \
-      inetutils-ping && \
+      golang \
+      inetutils-ping \
+      libgmp3-dev && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs python
 
@@ -19,6 +21,10 @@ RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
 WORKDIR /home/deploy
 
-RUN git clone https://github.com/ur-technology/explorer.git
+RUN mkdir ur_data
+RUN mkdir .ethash
+ADD ./files/bin/gur /usr/bin/gur
+EXPOSE 9595 19595 19595/udp
 
+RUN git clone https://github.com/ur-technology/explorer.git
 EXPOSE 8080
