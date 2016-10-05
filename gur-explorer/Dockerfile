@@ -21,6 +21,8 @@ RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
 WORKDIR /home/deploy
 
+RUN echo "about to create ur_data directory"
+RUN echo "pwd=$(pwd)"
 RUN mkdir ur_data
 RUN mkdir .ethash
 ADD ./files/bin/gur /usr/bin/gur
