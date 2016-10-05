@@ -19,4 +19,4 @@ services:
       - ./files/explorer.sh:/home/deploy/explorer.sh
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "8080"
+      - "8080:80"
