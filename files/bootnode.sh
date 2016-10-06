@@ -10,6 +10,4 @@ else
   NODEKEYHEX=$BOOTNODE2_NODEKEYHEX
   echo "ERROR - UNEXPECTED BOOTNODE `uname -n`"
 fi
-# gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX
-echo xxx > xxx
-tail -f xxx
+gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX

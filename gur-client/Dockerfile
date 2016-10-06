@@ -22,6 +22,6 @@ RUN mkdir ur_data
 RUN mkdir .ethash
 
 RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur
-# ADD ./files/bin/gur /usr/bin/gur
+ADD ./files/bin/gur /usr/bin/gur
 
 EXPOSE 9595 19595 19595/udp
