@@ -16,6 +16,7 @@ services:
     # restart: on-failure
     command: ./bootnode.sh
     volumes:
+      - ./files/bin:/usr/bin
       - ./files/bootnode.sh:/home/deploy/bootnode.sh
       - ./files/attach.sh:/home/deploy/attach.sh
       - ./files/gur-options.sh:/home/deploy/gur-options.sh
