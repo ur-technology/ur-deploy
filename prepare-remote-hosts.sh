@@ -2,7 +2,7 @@
 
 ALL_NODES="bootnode-1 bootnode-2 explorer-1 identifier-1 miner-1 rpc-1"
 
-ALL_NODES="explorer-1"
+ALL_NODES="bootnode-1"
 
 for h in $ALL_NODES
 do

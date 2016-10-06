@@ -21,7 +21,7 @@ WORKDIR /home/deploy
 RUN mkdir ur_data
 RUN mkdir .ethash
 
-# RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur && cp ./go-ur/build/bin/gur /usr/bin
-ADD ./files/bin/gur /usr/bin/gur
+RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur && cp ./go-ur/build/bin/gur /usr/bin
+# ADD ./files/bin/gur /usr/bin/gur
 
 EXPOSE 9595 19595 19595/udp
