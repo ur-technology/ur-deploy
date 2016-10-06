@@ -5,7 +5,7 @@
 set -eo pipefail
 nohup gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="0.0.0.0" </dev/null > ~/ur_data/gur.log 2>&1 &
 
-PUBLIC_IP_ADDRESS=$(nslookup explorer-1.ur.technology | awk '/./{line=$0} END{print line}' | awk '{print $2}')
+PUBLIC_IP_ADDRESS=$(nslookup explorer.ur.technology | awk '/./{line=$0} END{print line}' | awk '{print $2}')
 echo "PUBLIC_IP_ADDRESS=$PUBLIC_IP_ADDRESS"
 set -eo pipefail
 cd explorer
