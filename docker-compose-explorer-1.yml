@@ -17,6 +17,8 @@ services:
     command: ./explorer.sh
     volumes:
       - ./files/explorer.sh:/home/deploy/explorer.sh
+      - ./files/attach.sh:/home/deploy/attach.sh
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "80:8080"
+      - "9595:9595"
