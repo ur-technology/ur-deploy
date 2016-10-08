@@ -25,4 +25,4 @@ RUN mkdir ur_data
 RUN mkdir .ethash
 EXPOSE 9595 19595 19595/udp
 
-EXPOSE 8080
+EXPOSE 8080 5858

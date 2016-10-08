@@ -19,5 +19,5 @@ services:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "5858:5858"
       - "8080:8080"
+      - "5858:5858"
