@@ -46,3 +46,4 @@ if [[ !  -z  $IDS ]]; then
   docker rm $IDS
 fi
 docker-compose up -d --build $(hostname)
+docker logs $(hostname)
