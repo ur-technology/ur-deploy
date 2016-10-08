@@ -20,9 +20,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   chmod +x /usr/local/bin/docker-compose
 fi
 
-echo "here1"
-if [[ "`uname`" == *"queue-processor"* || "`uname`" == *"identifier"* ]]; then
-  echo "here2"
+if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; then
   if ! [[ -d files/ur-money-queue-processor ]]; then
     git clone --depth=1 --branch=dev git@github.com:urcapital/ur-money-queue-processor.git files/ur-money-queue-processor
   else
@@ -33,7 +31,6 @@ if [[ "`uname`" == *"queue-processor"* || "`uname`" == *"identifier"* ]]; then
     cd -
   fi
 fi
-echo "here3"
 
 rm -rf ur-deploy
 git clone git@github.com:ur-technology/ur-deploy.git

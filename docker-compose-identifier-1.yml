@@ -17,6 +17,7 @@ services:
     command: bin/identifier.sh
     volumes:
       - ./files/bin:/home/deploy/bin
+      - ./files/ur-money-queue-processor:/home/deploy/ur-money-queue-processor
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8080"
