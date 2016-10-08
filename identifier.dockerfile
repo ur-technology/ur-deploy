@@ -13,7 +13,8 @@ RUN apt-get update && \
       git \
       inetutils-ping && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
-    apt-get install -y nodejs python
+    apt-get install -y nodejs python &&
+    npm install -g typings
 
 RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
