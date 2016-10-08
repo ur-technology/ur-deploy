@@ -19,4 +19,4 @@ services:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "8080"
+      - "80:8080"
