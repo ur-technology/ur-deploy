@@ -20,21 +20,22 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   chmod +x /usr/local/bin/docker-compose
 fi
 
+rm -rf ur-deploy
+git clone git@github.com:ur-technology/ur-deploy.git
+cd ur-deploy
+
 if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; then
-  if ! [[ -d files/ur-money-queue-processor ]]; then
-    git clone --depth=1 --branch=dev git@github.com:urcapital/ur-money-queue-processor.git files/ur-money-queue-processor
-  else
+  if [[ -d files/ur-money-queue-processor ]]; then
     cd files/ur-money-queue-processor
     git fetch
     git checkout dev
     git reset --hard origin/dev
     cd -
+  else
+    git clone --depth=1 --branch=dev git@github.com:urcapital/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
 fi
 
-rm -rf ur-deploy
-git clone git@github.com:ur-technology/ur-deploy.git
-cd ur-deploy
 docker-compose -f docker-compose-$(hostname).yml down
 IDS=$(docker ps -q)
 if [[ !  -z  $IDS ]]; then
