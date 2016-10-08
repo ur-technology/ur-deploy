@@ -14,7 +14,7 @@ services:
       context: .
       dockerfile: ./identifier.dockerfile
     # restart: on-failure
-    command: /bin/bash
+    command: ./files/identifier.sh
     volumes:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
