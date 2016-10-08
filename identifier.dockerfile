@@ -11,7 +11,8 @@ RUN apt-get update && \
       curl \
       dnsutils \
       git \
-      inetutils-ping && \
+      inetutils-ping \
+      psmisc && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs python && \
     npm install -g typings
