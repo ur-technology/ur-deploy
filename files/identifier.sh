@@ -13,5 +13,6 @@ cp staging.env .env
 
 npm install
 npm install typings
-typings install
-npm start
+# typings install
+# npm start
+/bin/bash
