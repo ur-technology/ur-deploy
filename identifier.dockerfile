@@ -19,4 +19,8 @@ RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
 WORKDIR /home/deploy
 
+RUN mkdir ur_data
+RUN mkdir .ethash
+EXPOSE 9595 19595 19595/udp
+
 EXPOSE 8080
