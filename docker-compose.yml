@@ -3,7 +3,7 @@ services:
   bootnode-1:
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
     hostname: bootnode-1
     command: ./bootnode.sh
@@ -16,7 +16,7 @@ services:
   bootnode-2:
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
     hostname: bootnode-2
     command: ./bootnode.sh
@@ -29,7 +29,7 @@ services:
   rpc-1:
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
     command: ./rpc.sh
     volumes:
@@ -46,7 +46,7 @@ services:
   miner-1:
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
     command: ./miner.sh
     volumes:

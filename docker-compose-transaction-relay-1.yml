@@ -5,20 +5,18 @@ services:
       - "bootnode-1:10.134.9.248"
       - "bootnode-2:10.134.10.242"
       - "explorer-1:10.134.11.100"
-      - "identifier-1:10.134.22.110"
       - "miner-1:10.134.11.120"
-      - "rpc-1:10.134.11.121"
-    container_name: rpc-1
-    hostname: rpc-1
+      - "queue-processor-1:10.134.11.121"
+      - "transaction-relay-1:10.134.11.121"
+    container_name: transaction-relay-1
+    hostname: transaction-relay-1
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
-    command: ./rpc.sh
+    command: bin/transaction-relay.sh
     volumes:
-      - ./files/rpc.sh:/home/deploy/rpc.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/gur-options.sh:/home/deploy/gur-options.sh
+      - ./files/bin:/home/deploy/bin
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "9595:9595"

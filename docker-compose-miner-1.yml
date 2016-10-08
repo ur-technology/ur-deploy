@@ -12,7 +12,7 @@ services:
     hostname: miner-1
     build:
       context: .
-      dockerfile: ./gur-client/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
     command: ./miner.sh
     volumes:

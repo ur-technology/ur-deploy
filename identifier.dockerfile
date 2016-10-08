@@ -6,22 +6,17 @@ RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
 
 RUN apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    build-essential \
-    git \
-    golang \
-    libgmp3-dev \
-    inetutils-ping \
-    dnsutils
+    DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      build-essential \
+      curl \
+      dnsutils \
+      git \
+      inetutils-ping && \
+    curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
+    apt-get install -y nodejs python
 
 RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
 WORKDIR /home/deploy
 
-RUN mkdir ur_data
-RUN mkdir .ethash
-
-# RUN git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur
-ADD ./files/bin/gur /usr/bin/gur
-
-EXPOSE 9595 19595 19595/udp
+EXPOSE 8080
