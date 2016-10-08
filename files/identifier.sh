@@ -19,5 +19,5 @@ echo "about to call npm install"
 npm install
 # typings install
 # npm start
-echo "about to call /bin/bash"
-/bin/bash
+# echo "about to call /bin/bash"
+# /bin/bash
