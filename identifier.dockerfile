@@ -16,7 +16,6 @@ RUN apt-get update && \
     apt-get install -y nodejs python && \
     npm install -g typings
 
-RUN echo "*** about to add user deploy"
 RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
 WORKDIR /home/deploy
@@ -26,5 +25,3 @@ RUN mkdir .ethash
 EXPOSE 9595 19595 19595/udp
 
 EXPOSE 8080
-
-RUN echo "*** done with dockerfile"
