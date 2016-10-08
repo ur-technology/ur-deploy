@@ -2,7 +2,7 @@
 
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
-if [[ "`uname -n`" == "identifier-1" ]]; then
+if ! [ -x "$(command -v docker)" ]; then
   # install docker
   apt-get update
   apt-get install -y apt-transport-https ca-certificates
@@ -14,9 +14,11 @@ if [[ "`uname -n`" == "identifier-1" ]]; then
   service docker start
 fi
 
-# install docker-compose
-curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+if ! [ -x "$(command -v docker-compose)" ]; then
+  # install docker-compose
+  curl -L https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m) > /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
+fi
 
 rm -rf ur-deploy
 git clone git@github.com:ur-technology/ur-deploy.git
