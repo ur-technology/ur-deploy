@@ -22,12 +22,6 @@ Host miner-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host queue-processor-1
-    HostName 138.197.136.5
-    User deploy
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
 Host transaction-relay-1
     HostName 138.197.136.94
     User deploy

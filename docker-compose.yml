@@ -1,49 +1,77 @@
 version: '2'
 services:
   bootnode-1:
-    build:
-      context: .
-      dockerfile: ./gur.dockerfile
-    # restart: on-failure
+    extra_hosts:
+      - "bootnode-1:10.137.16.84"
+      - "bootnode-2:10.137.16.222"
+      - "explorer-1:10.137.128.189"
+      - "miner-1:10.137.16.122"
+      - "transaction-relay-1:10.137.144.3"
+    container_name: bootnode-1
     hostname: bootnode-1
-    command: ./bootnode.sh
-    volumes:
-      - ./files/bootnode.sh:/home/deploy/bootnode.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/gur-options.sh:/home/deploy/gur-options.sh
-      - /etc/localtime:/etc/localtime:ro
-
-  bootnode-2:
     build:
       context: .
       dockerfile: ./gur.dockerfile
     # restart: on-failure
-    hostname: bootnode-2
-    command: ./bootnode.sh
+    command: files/bootnode.sh
     volumes:
-      - ./files/bootnode.sh:/home/deploy/bootnode.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/gur-options.sh:/home/deploy/gur-options.sh
-      - /etc/localtime:/etc/localtime:ro
-
-  rpc-1:
-    build:
-      context: .
-      dockerfile: ./gur.dockerfile
-    # restart: on-failure
-    command: ./rpc.sh
-    volumes:
-      - ./files/rpc.sh:/home/deploy/rpc.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/gur-options.sh:/home/deploy/gur-options.sh
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
+      - "19595:19595"
+      - "19595:19595/udp"
+
+  bootnode-2:
+    extra_hosts:
+      - "bootnode-1:10.137.16.84"
+      - "bootnode-2:10.137.16.222"
+      - "explorer-1:10.137.128.189"
+      - "miner-1:10.137.16.122"
+      - "transaction-relay-1:10.137.144.3"
+    container_name: bootnode-2
+    hostname: bootnode-2
+    build:
+      context: .
+      dockerfile: ./gur.dockerfile
+    # restart: on-failure
+    command: files/bootnode.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"
+
+  explorer-1:
+    extra_hosts:
+      - "bootnode-1:10.137.16.84"
+      - "bootnode-2:10.137.16.222"
+      - "explorer-1:10.137.128.189"
+      - "miner-1:10.137.16.122"
+      - "transaction-relay-1:10.137.144.3"
+    container_name: explorer-1
+    hostname: explorer-1
+    build:
+      context: .
+      dockerfile: ./gur-explorer/Dockerfile
+    # restart: on-failure
+    command: files/explorer.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "80:8080"
       - "9595:9595"
-    depends_on:
-      - bootnode-1
-      - bootnode-2
 
   miner-1:
+    extra_hosts:
+      - "bootnode-1:10.137.16.84"
+      - "bootnode-2:10.137.16.222"
+      - "explorer-1:10.137.128.189"
+      - "miner-1:10.137.16.122"
+      - "transaction-relay-1:10.137.144.3"
+    container_name: miner-1
+    hostname: miner-1
     build:
       context: .
       dockerfile: ./gur.dockerfile
@@ -51,32 +79,42 @@ services:
     command: ./miner.sh
     volumes:
       # - ethash:/home/deploy/.ethash
-      - ./files/miner.sh:/home/deploy/miner.sh
-      - ./files/start-mining.sh:/home/deploy/start-mining.sh
-      - ./files/stop-mining.sh:/home/deploy/stop-mining.sh
-      - ./files/attach.sh:/home/deploy/attach.sh
-      - ./files/gur-options.sh:/home/deploy/gur-options.sh
-      - ./files/password:/home/deploy/files/password:ro
-      - ./files/keystore:/home/deploy/ur_data/keystore:rw
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
-    depends_on:
-      - bootnode-1
-      - bootnode-2
 
-  explorer-1:
+  transaction-relay-1:
+    extra_hosts:
+      - "bootnode-1:10.137.16.84"
+      - "bootnode-2:10.137.16.222"
+      - "explorer-1:10.137.128.189"
+      - "miner-1:10.137.16.122"
+      - "transaction-relay-1:10.137.144.3"
+    container_name: transaction-relay-1
+    hostname: transaction-relay-1
     build:
       context: .
-      dockerfile: ./gur-explorer/Dockerfile
+      dockerfile: ./gur.dockerfile
     # restart: on-failure
-    command: ./explorer.sh
+    command: files/transaction-relay.sh
     volumes:
-      - ./files/explorer.sh:/home/deploy/explorer.sh
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
-      - "8080"
-    depends_on:
-      - rpc-1
+      - "9595:9595"
+      - "19595:19595"
+      - "19595:19595/udp"
 
-# volumes:
-#     ethash:
-#       driver: local
+  identifier-1:
+    container_name: identifier-1
+    hostname: identifier-1
+    build:
+      context: .
+      dockerfile: ./identifier.dockerfile
+    # restart: on-failure
+    command: ./files/identifier.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    # ports:
+    #   - "8080:8080"
+    #   - "5858:5858"

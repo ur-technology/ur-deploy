@@ -19,7 +19,7 @@ By default this will create:
 To access the transaction relay container:
 
 ```
-PORT_MAPPING=$(docker port urdeploy_rpc-1 9595)
+PORT_MAPPING=$(docker port urdeploy_transaction-relay-1 9595)
 PORT=${PORT_MAPPING##*:}
 curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1001}' localhost:$PORT
 ```

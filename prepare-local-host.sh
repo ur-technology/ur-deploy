@@ -36,7 +36,7 @@ if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; 
   fi
 fi
 
-docker-compose -f docker-compose-$(hostname).yml down
+docker-compose down
 IDS=$(docker ps -q)
 if [[ !  -z  $IDS ]]; then
   docker kill $IDS
@@ -45,4 +45,4 @@ IDS=$(docker ps -aq)
 if [[ !  -z  $IDS ]]; then
   docker rm $IDS
 fi
-docker-compose -f docker-compose-$(hostname).yml up -d --build
+docker-compose up -d --build $(hostname)
