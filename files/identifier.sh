@@ -11,4 +11,5 @@ cd ur-money-queue-processor
 cp staging.env .env
 npm install
 typings install
-npm run-script debug
+# npm run-script debug
+npm start
