@@ -46,4 +46,4 @@ IDS=$(docker ps -aq)
 if [[ !  -z  $IDS ]]; then
   docker rm $IDS
 fi
-docker-compose -f docker-compose-$(hostname).yml up -d --build
+docker-compose -f docker-compose-$(hostname).yml up --build

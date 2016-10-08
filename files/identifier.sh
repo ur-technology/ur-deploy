@@ -12,5 +12,6 @@ cd ur-money-queue-processor
 cp staging.env .env
 
 npm install
+npm install typings
 typings install
 npm start
