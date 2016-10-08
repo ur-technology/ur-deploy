@@ -14,10 +14,9 @@ services:
       context: .
       dockerfile: ./identifier.dockerfile
     # restart: on-failure
-    command: bin/identifier.sh
+    command: files/identifier.sh
     volumes:
-      - ./files/bin:/home/deploy/bin
-      - ./files/ur-money-queue-processor:/home/deploy/ur-money-queue-processor
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "8080"

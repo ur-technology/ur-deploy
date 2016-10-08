@@ -14,9 +14,9 @@ services:
       context: .
       dockerfile: ./gur.dockerfile
     # restart: on-failure
-    command: bin/transaction-relay.sh
+    command: files/transaction-relay.sh
     volumes:
-      - ./files/bin:/home/deploy/bin
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "9595:9595"

@@ -14,9 +14,9 @@ services:
       context: .
       dockerfile: ./gur.dockerfile
     # restart: on-failure
-    command: bin/bootnode.sh
+    command: files/bootnode.sh
     volumes:
-      - ./files/bin:/home/deploy/bin
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "19595:19595"

@@ -14,9 +14,9 @@ services:
       context: .
       dockerfile: ./gur-explorer/Dockerfile
     # restart: on-failure
-    command: bin/explorer.sh
+    command: files/explorer.sh
     volumes:
-      - ./files/bin:/home/deploy/bin
+      - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "80:8080"
