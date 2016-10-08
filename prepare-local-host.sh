@@ -34,7 +34,6 @@ if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; 
   else
     git clone --depth=1 --branch=dev git@github.com:urcapital/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
-  chown -R deploy:deploy files/ur-money-queue-processor
 fi
 
 docker-compose -f docker-compose-$(hostname).yml down
