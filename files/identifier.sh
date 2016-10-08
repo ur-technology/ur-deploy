@@ -13,6 +13,8 @@ cp staging.env .env
 
 echo "about to call npm install typings"
 npm install typings
+echo "about to call which typings"
+which typings
 echo "about to call npm install"
 npm install
 # typings install
