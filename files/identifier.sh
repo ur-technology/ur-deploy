@@ -11,8 +11,11 @@ cp -R files/ur-money-queue-processor ~
 cd ur-money-queue-processor
 cp staging.env .env
 
-npm install
+echo "about to call npm install typings"
 npm install typings
+echo "about to call npm install"
+npm install
 # typings install
 # npm start
+echo "about to call /bin/bash"
 /bin/bash
