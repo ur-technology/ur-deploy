@@ -53,7 +53,7 @@ services:
     hostname: explorer-1
     build:
       context: .
-      dockerfile: ./gur-explorer/Dockerfile
+      dockerfile: ./explorer.dockerfile
     # restart: on-failure
     command: files/explorer.sh
     volumes:
