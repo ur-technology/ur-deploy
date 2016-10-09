@@ -32,7 +32,7 @@ if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; 
     git reset --hard origin/dev
     cd -
   else
-    git clone --depth=1 --branch=dev git@github.com:urcapital/ur-money-queue-processor.git files/ur-money-queue-processor
+    git clone --depth=1 --branch=dev git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
 fi
 

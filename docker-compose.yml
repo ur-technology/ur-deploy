@@ -76,7 +76,7 @@ services:
       context: .
       dockerfile: ./gur.dockerfile
     # restart: on-failure
-    command: ./miner.sh
+    command: files/miner.sh
     volumes:
       # - ethash:/home/deploy/.ethash
       - ./files:/home/deploy/files
@@ -111,7 +111,7 @@ services:
       context: .
       dockerfile: ./identifier.dockerfile
     # restart: on-failure
-    command: ./files/identifier.sh
+    command: files/identifier.sh
     volumes:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro

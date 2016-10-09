@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 ALL_NODES="bootnode-1 bootnode-2 explorer-1 miner-1 transaction-relay-1 identifier-1"
+ALL_NODES="miner-1"
 
 for h in $ALL_NODES
 do

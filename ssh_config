@@ -1,35 +1,35 @@
 Host bootnode-1
     HostName 159.203.14.117
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host bootnode-2
     HostName 159.203.36.102
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host explorer-1
     HostName 159.203.38.110
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host miner-1
     HostName 138.197.128.43
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host transaction-relay-1
     HostName 138.197.136.94
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host identifier-1
     HostName 190.15.64.24
-    User deploy
+    User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
