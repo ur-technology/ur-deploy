@@ -13,4 +13,7 @@ else
   NODEKEYHEX=$BOOTNODE_2_NODEKEYHEX
   echo "ERROR - UNEXPECTED BOOTNODE $BASE_HOSTNAME"
 fi
+
+echo calling gur with options $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX
+
 files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX
