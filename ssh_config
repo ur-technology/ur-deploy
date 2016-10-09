@@ -1,3 +1,39 @@
+Host dev-bootnode-1
+    HostName 138.197.138.155
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host dev-bootnode-2
+    HostName 138.197.138.202
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host dev-explorer-1
+    HostName 138.197.134.168
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host dev-miner-1
+    HostName 138.197.134.147
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host dev-transaction-relay-1
+    HostName 138.197.138.35
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host dev-identifier-1
+    HostName 138.197.134.185
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
 Host bootnode-1
     HostName 159.203.14.117
     User root

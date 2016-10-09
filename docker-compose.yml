@@ -1,12 +1,6 @@
 version: '2'
 services:
   bootnode-1:
-    extra_hosts:
-      - "bootnode-1:${BOOTNODE_1_PRIVATE_IP}"
-      - "bootnode-2:${BOOTNODE_2_PRIVATE_IP}"
-      - "explorer-1:${EXPLORER_1_PRIVATE_IP}"
-      - "miner-1:10.${MINER_1_PRIVATE_IP}"
-      - "transaction-relay-1:${TRANSACTION_RELAY_1_PRIVATE_IP}"
     container_name: bootnode-1
     hostname: bootnode-1
     build:
@@ -23,12 +17,6 @@ services:
       - "19595:19595/udp"
 
   bootnode-2:
-    extra_hosts:
-      - "bootnode-1:10.137.16.84"
-      - "bootnode-2:10.137.16.222"
-      - "explorer-1:10.137.128.189"
-      - "miner-1:10.137.144.248"
-      - "transaction-relay-1:10.137.144.3"
     container_name: bootnode-2
     hostname: bootnode-2
     build:
@@ -45,12 +33,6 @@ services:
       - "19595:19595/udp"
 
   explorer-1:
-    extra_hosts:
-      - "bootnode-1:10.137.16.84"
-      - "bootnode-2:10.137.16.222"
-      - "explorer-1:10.137.128.189"
-      - "miner-1:10.137.144.248"
-      - "transaction-relay-1:10.137.144.3"
     container_name: explorer-1
     hostname: explorer-1
     build:
@@ -67,12 +49,6 @@ services:
       - "9595:9595"
 
   miner-1:
-    extra_hosts:
-      - "bootnode-1:10.137.16.84"
-      - "bootnode-2:10.137.16.222"
-      - "explorer-1:10.137.128.189"
-      - "miner-1:10.137.144.248"
-      - "transaction-relay-1:10.137.144.3"
     container_name: miner-1
     hostname: miner-1
     build:
@@ -87,12 +63,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
 
   transaction-relay-1:
-    extra_hosts:
-      - "bootnode-1:10.137.16.84"
-      - "bootnode-2:10.137.16.222"
-      - "explorer-1:10.137.128.189"
-      - "miner-1:10.137.144.248"
-      - "transaction-relay-1:10.137.144.3"
     container_name: transaction-relay-1
     hostname: transaction-relay-1
     build:
