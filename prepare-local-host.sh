@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source ./.env
+
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
 if ! [ -x "$(command -v docker)" ]; then
@@ -22,17 +24,20 @@ fi
 
 rm -rf ur-deploy
 git clone git@github.com:ur-technology/ur-deploy.git
+cp .env ur-deploy
 cd ur-deploy
 
-if [[ "`hostname`" == *"queue-processor"* || "`hostname`" == *"identifier"* ]]; then
+BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
+
+if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
   if [[ -d files/ur-money-queue-processor ]]; then
     cd files/ur-money-queue-processor
     git fetch
-    git checkout dev
-    git reset --hard origin/dev
+    git checkout $UR_MONEY_QUEUE_PROCESSOR_BRANCH
+    git reset --hard origin/$UR_MONEY_QUEUE_PROCESSOR_BRANCH
     cd -
   else
-    git clone --depth=1 --branch=dev git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
+    git clone --depth=1 --branch=$UR_MONEY_QUEUE_PROCESSOR_BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
 fi
 
@@ -42,8 +47,8 @@ if [[ !  -z  $IDS ]]; then
   docker kill $IDS
 fi
 IDS=$(docker ps -aq)
-if [[ !  -z  $IDS ]]; then
+if [[ ! -z $IDS ]]; then
   docker rm $IDS
 fi
-docker-compose up -d --build $(hostname)
-docker logs $(hostname)
+docker-compose up -d --build $BASE_HOSTNAME
+docker logs $BASE_HOSTNAME

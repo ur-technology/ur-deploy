@@ -7,8 +7,7 @@ nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,eth,ne
 
 cd explorer
 npm install bower
-EXPLORER_IP_ADDRESS=$(nslookup explorer.ur.technology | awk '/./{line=$0} END{print line}' | awk '{print $2}')
-sed -i "s/localhost/$EXPLORER_IP_ADDRESS/g" app/app.js
+sed -i "s/localhost/$EXPLORER_1_PUBLIC_IP/g" app/app.js
 sed -i 's/localhost/0.0.0.0/g' package.json
 npm install
 npm start
