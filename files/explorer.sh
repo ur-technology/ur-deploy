@@ -3,7 +3,7 @@
 
 . files/gur-options.sh
 set -eo pipefail
-nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpc --rpcaddr=0.0.0.0 --rpcport 9595 --rpcapi 'web3,eth' --rpccorsdomain 'http://explorer.ur.technology'" </dev/null > ~/ur_data/gur.log 2>&1 &"
+nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpc --rpcaddr '0.0.0.0' --rpcport 9595 --rpcapi 'web3,eth' --rpccorsdomain 'http://explorer.ur.technology'" </dev/null > ~/ur_data/gur.log 2>&1 &"
 
 cd explorer
 npm install bower
