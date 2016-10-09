@@ -14,6 +14,10 @@ fi
 echo ALL_NODES=$ALL_NODES
 for h in $ALL_NODES
 do
+  echo ""
+  echo "*********************************************"
+  echo "Preparing server $h..."
+  echo "*********************************************"
   scp -F ssh_config -o StrictHostKeyChecking=no ~/.ssh/id_rsa_ur_capital root@$h:/root/.ssh/id_rsa
   scp -F ssh_config -o StrictHostKeyChecking=no ./prepare-local-host.sh root@$h:
   scp -F ssh_config -o StrictHostKeyChecking=no ./env.$UR_ENV root@$h:.env

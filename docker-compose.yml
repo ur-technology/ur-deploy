@@ -9,6 +9,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/bootnode.sh
     volumes:
       - ./files:/home/deploy/files
@@ -26,6 +29,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/bootnode.sh
     volumes:
       - ./files:/home/deploy/files
@@ -43,6 +49,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/explorer.sh
     volumes:
       - ./files:/home/deploy/files
@@ -60,6 +69,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/miner.sh
     volumes:
       # - ethash:/home/deploy/.ethash
@@ -75,6 +87,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/transaction-relay.sh
     volumes:
       - ./files:/home/deploy/files
@@ -93,6 +108,9 @@ services:
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/identifier.sh
     volumes:
       - ./files:/home/deploy/files
