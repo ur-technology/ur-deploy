@@ -3,12 +3,13 @@
 
 . files/gur-options.sh
 set -eo pipefail
-nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="127.0.0.1" </dev/null > ~/ur_data/gur.log 2>&1 &
+EXPLORER_IP_ADDRESS=$(nslookup explorer.ur.technology | awk '/./{line=$0} END{print line}' | awk '{print $2}')
+RPC_OPTIONS="--rpc --rpcaddr $EXPLORER_IP_ADDRESS --rpcport 9595 --rpcapi 'web3,eth' --rpccorsdomain 'http://explorer.ur.technology'"
+nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION $RPC_OPTIONS" </dev/null > ~/ur_data/gur.log 2>&1 &"
 
 cd explorer
 npm install bower
-PUBLIC_IP_ADDRESS=$(nslookup explorer.ur.technology | awk '/./{line=$0} END{print line}' | awk '{print $2}')
-sed -i "s/localhost/$PUBLIC_IP_ADDRESS/g" app/app.js
+sed -i "s/localhost/$EXPLORER_IP_ADDRESS/g" app/app.js
 sed -i 's/localhost/0.0.0.0/g' package.json
 npm install
 npm start
