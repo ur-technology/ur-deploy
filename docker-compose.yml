@@ -8,6 +8,7 @@ services:
       dockerfile: ./gur.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/bootnode.sh
     volumes:
       - ./files:/home/deploy/files
@@ -24,6 +25,7 @@ services:
       dockerfile: ./gur.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/bootnode.sh
     volumes:
       - ./files:/home/deploy/files
@@ -40,6 +42,7 @@ services:
       dockerfile: ./explorer.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/explorer.sh
     volumes:
       - ./files:/home/deploy/files
@@ -56,6 +59,7 @@ services:
       dockerfile: ./gur.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/miner.sh
     volumes:
       # - ethash:/home/deploy/.ethash
@@ -70,6 +74,7 @@ services:
       dockerfile: ./gur.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/transaction-relay.sh
     volumes:
       - ./files:/home/deploy/files
@@ -87,6 +92,7 @@ services:
       dockerfile: ./identifier.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
     command: files/identifier.sh
     volumes:
       - ./files:/home/deploy/files
