@@ -11,8 +11,12 @@ RUN apt-get update && \
       curl \
       dnsutils \
       git \
+      golang \
       inetutils-ping \
-      psmisc && \
+      libgmp3-dev \
+      psmisc \
+      unzip \
+      wget && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs python && \
     npm install -g typings
