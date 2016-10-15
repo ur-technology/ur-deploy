@@ -41,6 +41,11 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   fi
 fi
 
+wget https://github.com/ur-technology/go-ur/releases/download/v1.0.0-1.4.3/gur-linux-amd64.zip && \
+  unzip gur-linux-amd64.zip && \
+  mv gur-linux-amd64 files/gur
+# git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
+
 docker-compose down
 IDS=$(docker ps -q)
 if [[ !  -z  $IDS ]]; then
