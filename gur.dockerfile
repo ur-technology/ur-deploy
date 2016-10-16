@@ -12,9 +12,7 @@ RUN apt-get update && \
     git \
     golang \
     inetutils-ping \
-    libgmp3-dev \
-    unzip \
-    wget
+    libgmp3-dev
 
 RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy

@@ -14,9 +14,7 @@ RUN apt-get update && \
       golang \
       inetutils-ping \
       libgmp3-dev \
-      psmisc \
-      unzip \
-      wget && \
+      psmisc && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs python && \
     npm install -g typings

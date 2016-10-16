@@ -41,6 +41,7 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   fi
 fi
 
+apt-get install -y wget unzip
 wget https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1/gur-linux-amd64.zip && \
   unzip -d files gur-linux-amd64.zip gur
 # git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
