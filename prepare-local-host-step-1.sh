@@ -4,7 +4,7 @@ source ./.env
 
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
-if ! [ -x "$(command -v docker)" ]; then
+if [ -x "$(command -v docker)" ]; then
   # install docker
   apt-get update
   apt-get install -y apt-transport-https ca-certificates
@@ -55,5 +55,3 @@ IDS=$(docker ps -aq)
 if [[ ! -z $IDS ]]; then
   docker rm $IDS
 fi
-docker-compose up -d --build $BASE_HOSTNAME
-docker logs $BASE_HOSTNAME
