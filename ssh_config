@@ -52,6 +52,12 @@ Host explorer-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
+Host explorer-2
+    HostName 159.203.42.159
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
 Host miner-1
     HostName 138.197.128.43
     User root
