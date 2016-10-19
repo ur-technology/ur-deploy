@@ -39,6 +39,7 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   else
     git clone --depth=1 --branch=$UR_MONEY_QUEUE_PROCESSOR_BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
+  cp env.$UR_DEV files/ur-money-queue-processor.env
 fi
 
 apt-get install -y wget unzip
