@@ -39,11 +39,20 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   else
     git clone --depth=1 --branch=$UR_MONEY_QUEUE_PROCESSOR_BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
-  cp env.$UR_DEV files/ur-money-queue-processor.env
+
+  read -s -p "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: " PRIVILEGED_UTI_OUTBOUND_PASSWORD
+  echo ""
+  if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
+    PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
+  fi
+  echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
+
+  echo "here are the contents of .env:"
+  cat .env
 fi
 
 apt-get install -y wget unzip
-wget https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-alpha/gur-linux-amd64.zip && \
+wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-alpha/gur-linux-amd64.zip && \
   unzip -d files gur-linux-amd64.zip gur
 # git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
 
@@ -56,3 +65,4 @@ IDS=$(docker ps -aq)
 if [[ ! -z $IDS ]]; then
   docker rm $IDS
 fi
+echo "all done preparing local host"

@@ -9,7 +9,7 @@ nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,net
 rm -rf ~/ur-money-queue-processor
 cp -R files/ur-money-queue-processor ~/
 cd ur-money-queue-processor
-cp env.staging .env
+cp env.$UR_DEV .env
 npm install
 typings install
 # npm run-script debug
