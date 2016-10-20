@@ -17,7 +17,7 @@ RUN apt-get update && \
       psmisc && \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - && \
     apt-get install -y nodejs python && \
-    npm install -g typings
+    npm install -g typings node-inspector
 
 RUN adduser --disabled-password --gecos "" deploy && usermod -aG sudo deploy
 USER deploy
@@ -28,4 +28,4 @@ RUN mkdir .ethash
 EXPOSE 9595 19595 19595/udp
 
 RUN echo "in dockerfile: UR_ENV=$UR_ENV"
-# EXPOSE 8080 5858
+EXPOSE 8080 5858

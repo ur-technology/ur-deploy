@@ -115,6 +115,6 @@ services:
     volumes:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
-    # ports:
-    #   - "8080:8080"
-    #   - "5858:5858"
+    ports:
+      - "8080:8080"
+      - "5858:5858"
