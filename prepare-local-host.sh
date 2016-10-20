@@ -70,9 +70,7 @@ wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-
   unzip -d files gur-linux-amd64.zip gur
 # git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
 
-echo "here 1"
 docker-compose down
-echo "here 2"
 IDS=$(docker ps -q)
 if [[ !  -z  $IDS ]]; then
   docker kill $IDS
