@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-source ./.env
+UR_ENV=$1
+if [[ "$UR_ENV" == "prod" ]]; then
+  echo "running $0 in prod mode"
+elif [[ "$UR_ENV" == "dev" ]]; then
+  echo "running $0 in dev mode"
+else
+  echo "Usage: $0 prod|dev"
+  exit 1
+fi
 
 echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 
@@ -24,34 +32,37 @@ fi
 
 rm -rf ur-deploy
 git clone git@github.com:ur-technology/ur-deploy.git
-cp .env ur-deploy
 cd ur-deploy
-
 BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
 
+# download latest version of ur-money-queue-processor code
 if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
+  if [[ "$UR_ENV" == "prod" ]]; then
+    BRANCH=master
+  else
+    BRANCH=dev
+  fi
   if [[ -d files/ur-money-queue-processor ]]; then
     cd files/ur-money-queue-processor
     git fetch
-    git checkout $UR_MONEY_QUEUE_PROCESSOR_BRANCH
-    git reset --hard origin/$UR_MONEY_QUEUE_PROCESSOR_BRANCH
+    git checkout $BRANCH
+    git reset --hard origin/$BRANCH
     cd -
   else
-    git clone --depth=1 --branch=$UR_MONEY_QUEUE_PROCESSOR_BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
+    git clone --depth=1 --branch=$BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
+fi
 
-  echo "about to ask for password"
-  read -s -p "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: " PRIVILEGED_UTI_OUTBOUND_PASSWORD
+# prepare .env file for dockerfile
+cp env.dockerfile.$UR_ENV .env
+if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
+  echo "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: "
+  read -s PRIVILEGED_UTI_OUTBOUND_PASSWORD
   echo ""
   if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
     PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
   fi
   echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
-
-  echo "current diretory is:"
-  echo `pwd`
-  echo "here are the contents of .env:"
-  cat .env
 fi
 
 apt-get install -y wget unzip
@@ -59,7 +70,9 @@ wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-
   unzip -d files gur-linux-amd64.zip gur
 # git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
 
+echo "here 1"
 docker-compose down
+echo "here 2"
 IDS=$(docker ps -q)
 if [[ !  -z  $IDS ]]; then
   docker kill $IDS

@@ -21,8 +21,7 @@ do
   scp -F ssh_config -o StrictHostKeyChecking=no ~/.ssh/id_rsa_ur_capital root@$h:/root/.ssh/id_rsa
   scp -F ssh_config -o StrictHostKeyChecking=no ./prepare-local-host.sh root@$h:
   scp -F ssh_config -o StrictHostKeyChecking=no ./start-docker-script.sh root@$h:
-  scp -F ssh_config -o StrictHostKeyChecking=no ./env.$UR_ENV root@$h:.env
-  ssh -F ssh_config -o StrictHostKeyChecking=no root@$h ./prepare-local-host.sh
+  ssh -F ssh_config -o StrictHostKeyChecking=no root@$h ./prepare-local-host.sh $UR_ENV
 done
 
 for h in $ALL_NODES
@@ -31,5 +30,5 @@ do
   echo "*********************************************"
   echo "Starting docker script $h..."
   echo "*********************************************"
-  ssh -F ssh_config -o StrictHostKeyChecking=no root@$h ./start-docker-script.sh
+  ssh -F ssh_config -o StrictHostKeyChecking=no root@$h ./start-docker-script.sh $UR_ENV
 done
