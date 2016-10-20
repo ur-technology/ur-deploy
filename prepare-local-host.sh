@@ -40,6 +40,7 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
     git clone --depth=1 --branch=$UR_MONEY_QUEUE_PROCESSOR_BRANCH git@github.com:ur-technology/ur-money-queue-processor.git files/ur-money-queue-processor
   fi
 
+  echo "about to ask for password"
   read -s -p "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: " PRIVILEGED_UTI_OUTBOUND_PASSWORD
   echo ""
   if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
@@ -47,6 +48,8 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   fi
   echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 
+  echo "current diretory is:"
+  echo `pwd`
   echo "here are the contents of .env:"
   cat .env
 fi
