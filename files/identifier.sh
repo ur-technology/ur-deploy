@@ -9,6 +9,7 @@ set -eo pipefail
 rm -rf ~/ur-money-queue-processor
 cp -R files/ur-money-queue-processor ~/
 
+rm -rf ~/ur_data/keystore
 mkdir ~/ur_data/keystore
 cp ~/ur-money-queue-processor/keystore.$UR_ENV/* ~/ur_data/keystore/
 
