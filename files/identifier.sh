@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "in script: UR_DEV=$UR_DEV"
+echo "in script: UR_ENV=$UR_ENV"
 
 . files/gur-options.sh
 set -eo pipefail
@@ -10,7 +10,7 @@ nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,net
 rm -rf ~/ur-money-queue-processor
 cp -R files/ur-money-queue-processor ~/
 cd ur-money-queue-processor
-cp env.$UR_DEV .env
+cp env.$UR_ENV .env
 npm install
 typings install
 # npm run-script debug

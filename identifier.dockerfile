@@ -27,5 +27,5 @@ RUN mkdir ur_data
 RUN mkdir .ethash
 EXPOSE 9595 19595 19595/udp
 
-RUN echo "in dockerfile: UR_DEV=$UR_DEV"
+RUN echo "in dockerfile: UR_ENV=$UR_ENV"
 # EXPOSE 8080 5858
