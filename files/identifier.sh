@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "in script: UR_ENV=$UR_ENV"
+echo "in $0: UR_ENV=$UR_ENV"
 
 . files/gur-options.sh
 set -eo pipefail
