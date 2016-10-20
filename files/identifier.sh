@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "in $0: UR_ENV=$UR_ENV"
+echo "in $0: PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD"
 
 . files/gur-options.sh
 set -eo pipefail
