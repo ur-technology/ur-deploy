@@ -12,6 +12,7 @@ rm -rf ~/ur-money-queue-processor
 cp -R files/ur-money-queue-processor ~/
 cd ur-money-queue-processor
 cp env.$UR_ENV .env
+echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 npm install
 typings install
 # npm run-script debug
