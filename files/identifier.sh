@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "in script: UR_DEV=$UR_DEV"
 
 . files/gur-options.sh
 set -eo pipefail
