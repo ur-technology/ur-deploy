@@ -22,6 +22,12 @@ Host dev-miner-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
+Host dev-miner-2
+    HostName 138.197.136.97
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
 Host dev-transaction-relay-1
     HostName 138.197.138.35
     User root
