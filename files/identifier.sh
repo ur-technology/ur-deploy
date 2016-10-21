@@ -20,5 +20,5 @@ cp env.node.$UR_ENV .env
 echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 npm install
 typings install
-npm run-script debug
-# npm start
+# npm run-script debug
+npm start
