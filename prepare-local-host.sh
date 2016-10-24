@@ -55,6 +55,7 @@ fi
 
 # prepare .env file for dockerfile
 cp env.dockerfile.$UR_ENV .env
+PRIVILEGED_UTI_OUTBOUND_PASSWORD=""
 if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
   echo "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: "
   read -s PRIVILEGED_UTI_OUTBOUND_PASSWORD
@@ -62,8 +63,8 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
     PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
   fi
-  echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 fi
+echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 
 apt-get install -y wget unzip
 wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-alpha/gur-linux-amd64.zip && \
