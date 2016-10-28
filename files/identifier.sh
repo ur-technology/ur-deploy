@@ -13,7 +13,7 @@ rm -rf ~/ur_data/keystore
 mkdir ~/ur_data/keystore
 cp ~/ur-money-queue-processor/keystore.dev/* ~/ur_data/keystore/
 
-nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="127.0.0.1" </dev/null > ~/ur_data/gur.log 2>&1 &
+nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="127.0.0.1" </dev/null > ~/ur_data/gur.log 2>&1 &
 
 cd ur-money-queue-processor
 cp env.node.$UR_ENV .env
