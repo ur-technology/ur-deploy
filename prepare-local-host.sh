@@ -64,7 +64,7 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
     PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
   fi
 fi
-echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=\"$PRIVILEGED_UTI_OUTBOUND_PASSWORD\"" >> .env
+echo 'PRIVILEGED_UTI_OUTBOUND_PASSWORD="$PRIVILEGED_UTI_OUTBOUND_PASSWORD"' >> .env
 
 apt-get install -y wget unzip
 wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-alpha/gur-linux-amd64.zip && \
