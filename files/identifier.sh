@@ -19,5 +19,5 @@ npm install
 typings install
 # npm run-script debug
 nohup npm start </dev/null > ~/ur-money-queue-processor.log 2>&1 &
-
-tail -f ~/ur-money-queue-processor.log
+sleep 5
+tail -f ~/xur-money-queue-processor.log
