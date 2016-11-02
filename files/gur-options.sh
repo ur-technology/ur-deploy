@@ -6,4 +6,4 @@ BOOTNODE2_ENODE_URL="enode://d846b3c0445b7a91cfeb56fbeaece55ca9e559a6e5810cc41c5
 export BOOTNODES_OPTION="--bootnodes ${BOOTNODE1_ENODE_URL},${BOOTNODE2_ENODE_URL}"
 export BOOTNODE_1_NODEKEYHEX="4b3698f291fe0c9db2de3cbe98f0cf01a4446b1accf1c69cfccb80ee241d8099"
 export BOOTNODE_2_NODEKEYHEX="78fd2bf45c4e09d7102a95fb9529876d05d2088cd37a4455b19d2507b0a88cb1"
-export BASE_GUR_OPTIONS="--networkid ${UR_NETWORK_ID} --datadir /home/deploy/ur_data --ipcapi='admin,db,ur,debug,miner,net,shh,txpool,personal,web3'"
+export BASE_GUR_OPTIONS="--networkid ${UR_NETWORK_ID} --datadir /home/deploy/ur_data --ipcapi='admin,db,ur,eth,debug,miner,net,shh,txpool,personal,web3'"
