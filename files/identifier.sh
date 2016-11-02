@@ -15,6 +15,7 @@ sleep 30
 
 cd ~/ur-money-queue-processor
 cp env.node.$UR_ENV .env
+PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/\-/ /g')
 echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 npm install
 typings install
