@@ -5,13 +5,14 @@ echo "in $0: UR_ENV=$UR_ENV"
 . files/gur-options.sh
 set -eo pipefail
 
-
 rm -rf ~/ur-money-queue-processor
 cp -R files/ur-money-queue-processor ~/
-
-rm -rf ~/ur_data/keystore
-mkdir ~/ur_data/keystore
-cp ~/ur-money-queue-processor/keystore.dev/* ~/ur_data/keystore/
+mkdir -p ~/ur_data/keystore
+if [[ "$UR_ENV" == "prod" ]]; then
+  echo "Please manually copy production keystore file(s) to /home/deploy/ur_data/keystore/"
+else
+  cp ~/ur-money-queue-processor/keystore.dev/* ~/ur_data/keystore/
+fi
 
 nohup files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="127.0.0.1" </dev/null > ~/ur_data/gur.log 2>&1 &
 
