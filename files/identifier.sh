@@ -18,6 +18,6 @@ echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .en
 npm install
 typings install
 # npm run-script debug
+touch ~/ur-money-queue-processor.log
 nohup npm start </dev/null > ~/ur-money-queue-processor.log 2>&1 &
-sleep 5
-tail -f ~/xur-money-queue-processor.log
+tail -f ~/ur-money-queue-processor.log
