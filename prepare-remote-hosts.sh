@@ -4,8 +4,8 @@ UR_ENV=$1
 if [[ "$UR_ENV" == "prod" ]]; then
   ALL_NODES="just-one-node"
 elif [[ "$UR_ENV" == "dev" ]]; then
-  ALL_NODES="dev-bootnode-1 dev-bootnode-2 dev-explorer-1 dev-miner-1 dev-miner-2 dev-transaction-relay-1 dev-identifier-1"
-  # ALL_NODES="dev-identifier-1"
+  # ALL_NODES="dev-bootnode-1 dev-bootnode-2 dev-explorer-1 dev-miner-1 dev-miner-2 dev-transaction-relay-1 dev-identifier-1"
+  ALL_NODES="just-one-node"
 else
   echo "Usage: $0 prod|dev"
   exit 1
