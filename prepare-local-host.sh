@@ -55,19 +55,20 @@ fi
 
 # prepare .env file for dockerfile
 cp env.dockerfile.$UR_ENV .env
-if [[ "$UR_ENV" == "prod" ]]; then
-  PRIVILEGED_UTI_OUTBOUND_PASSWORD=""
-  if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
+PRIVILEGED_UTI_OUTBOUND_PASSWORD=""
+if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
+  if [[ "$UR_ENV" == "prod" ]]; then
     echo "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: "
     read -s PRIVILEGED_UTI_OUTBOUND_PASSWORD
     echo ""
-    if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
-      PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
-    fi
   fi
-  PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/ /\-/g')
-  echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
+  if  [[ -z $PRIVILEGED_UTI_OUTBOUND_PASSWORD  ]]; then
+    PRIVILEGED_UTI_OUTBOUND_PASSWORD=wQEqfsik6i3CspYqVdh
+  fi
 fi
+PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/ /\-/g')
+echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
+
 apt-get install -y wget unzip
 wget --quiet https://github.com/ur-technology/go-ur/releases/download/UR-v0.0.1-alpha/gur-linux-amd64.zip && \
   unzip -d files gur-linux-amd64.zip gur
