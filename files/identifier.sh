@@ -18,6 +18,7 @@ cp env.node.$UR_ENV .env
 PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/\-/ /g')
 echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 npm install
+typings install
 # npm run-script debug
 touch ~/ur-money-queue-processor.log
 nohup npm start </dev/null >> ~/ur-money-queue-processor.log 2>&1 &
