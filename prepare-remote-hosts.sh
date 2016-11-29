@@ -17,7 +17,7 @@ do
   echo "*********************************************"
   echo "Preparing server $h..."
   echo "*********************************************"
-  scp -F ssh_config -o StrictHostKeyChecking=no ~/.ssh/id_rsa_ur_capital root@$h:/root/.ssh/id_rsa
+  scp -F ssh_config -o StrictHostKeyChecking=no ~/.ssh/id_rsa root@$h:/root/.ssh/id_rsa
   scp -F ssh_config -o StrictHostKeyChecking=no ./prepare-local-host.sh root@$h:
   scp -F ssh_config -o StrictHostKeyChecking=no ./start-docker-script.sh root@$h:
   ssh -F ssh_config -o StrictHostKeyChecking=no root@$h ./prepare-local-host.sh $UR_ENV
