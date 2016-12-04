@@ -101,7 +101,7 @@ services:
     hostname: transaction-relay-1
     build:
       context: .
-      dockerfile: ./gur.dockerfile
+      dockerfile: ./identifier.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
@@ -114,6 +114,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "9595:9595"
+      - "9596:9596"
       - "19595:19595"
       - "19595:19595/udp"
 
