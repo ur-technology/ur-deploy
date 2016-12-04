@@ -53,6 +53,24 @@ if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifie
   fi
 fi
 
+# download latest version of gur-https-proxy code
+if [[ "$BASE_HOSTNAME" == *"transaction-relay"* ]]; then
+  if [[ "$UR_ENV" == "prod" ]]; then
+    BRANCH=master
+  else
+    BRANCH=dev
+  fi
+  if [[ -d files/gur-https-proxy ]]; then
+    cd files/gur-https-proxy
+    git fetch
+    git checkout $BRANCH
+    git reset --hard origin/$BRANCH
+    cd -
+  else
+    git clone --depth=1 --branch=$BRANCH git@github.com:ur-technology/gur-https-proxy.git files/gur-https-proxy
+  fi
+fi
+
 # prepare .env file for dockerfile
 cp env.dockerfile.$UR_ENV .env
 PRIVILEGED_UTI_OUTBOUND_PASSWORD=""
