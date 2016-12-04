@@ -4,7 +4,7 @@
 set -eo pipefail
 
 rm -rf ~/gur-https-proxy
-cp -R ~/files/ur-money-queue-processor ~/
+cp -R ~/files/gur-https-proxy ~/
 
 nohup ~/files/gur $BASE_GUR_OPTIONS $BOOTNODES_OPTION --rpcapi "db,personal,ur,eth,net,web3" --rpccorsdomain="*" --rpc --rpcaddr="0.0.0.0" </dev/null > ~/ur_data/gur.log 2>&1 &
 sleep 60
