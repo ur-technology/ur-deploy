@@ -78,6 +78,9 @@ echo
 echo "number of users locked out because of failed logins:"
 curl -s 'https://ur-money-production.firebaseio.com/users.json?auth=GGl4d0BKYzf7b5L50eEHYICCZ3PdfvsuPJi6hW6l&orderBy="failedLoginCount"&startAt=10' | jq 'to_entries| .[] | .key' | wc -l
 
+echo
+echo "number users users under unknownuser@ur.technology:"
+curl -s 'https://ur-money-production.firebaseio.com/users.json?auth=GGl4d0BKYzf7b5L50eEHYICCZ3PdfvsuPJi6hW6l&orderBy=%22sponsor/userId%22&equalTo=%22-KWUqyvjufVMXRXc12FL2%22' | jq 'to_entries| .[] | { email: .value.email, downlineUserCount: ( .value.downlineUsers | []? | length )} ' | grep downlineUserCount | wc -l
 
 # queues
 showQueueStates smsAuthCodeGenerationQueue
