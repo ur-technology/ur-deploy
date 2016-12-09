@@ -12,7 +12,7 @@ sleep 60
 cd ~/gur-https-proxy
 npm install
 typings install
-if [[ "$UR_ENV" == "prod" || "$UR_ENV" == "production" ]]; then
+if [[ "$UR_ENV" == "production" ]]; then
   cp env.production .env
 else
   cp env.staging .env

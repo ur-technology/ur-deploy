@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 UR_ENV=$1
-if [[ "$UR_ENV" == "prod" ]]; then
-  echo "running $0 in prod mode"
-elif [[ "$UR_ENV" == "dev" ]]; then
-  echo "running $0 in dev mode"
+if [[ "$UR_ENV" == "production" ]]; then
+  echo "running $0 in production mode"
+elif [[ "$UR_ENV" == "staging" ]]; then
+  echo "running $0 in staging mode"
 else
-  echo "Usage: $0 prod|dev"
+  echo "Usage: $0 production|staging"
   exit 1
 fi
 

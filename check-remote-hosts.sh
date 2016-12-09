@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 UR_ENV=$1
-if [[ "$UR_ENV" == "prod" ]]; then
+if [[ "$UR_ENV" == "production" ]]; then
   ALL_NODES="bootnode-1 bootnode-2 explorer-1 miner-1 transaction-relay-1 identifier-1"
-elif [[ "$UR_ENV" == "dev" ]]; then
+elif [[ "$UR_ENV" == "staging" ]]; then
   ALL_NODES="dev-bootnode-1 dev-bootnode-2 dev-explorer-1 dev-miner-1 dev-transaction-relay-1 dev-identifier-1"
 else
-  echo "Usage: $0 prod|dev"
+  echo "Usage: $0 production|staging"
   exit 1
 fi
 

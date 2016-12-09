@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 UR_ENV=$1
-if [[ "$UR_ENV" == "prod" ]]; then
-  echo "running $0 in prod mode"
-elif [[ "$UR_ENV" == "dev" ]]; then
-  echo "running $0 in dev mode"
+if [[ "$UR_ENV" == "production" ]]; then
+  echo "running $0 in production mode"
+elif [[ "$UR_ENV" == "staging" ]]; then
+  echo "running $0 in staging mode"
 else
-  echo "Usage: $0 prod|dev"
+  echo "Usage: $0 production|staging"
   exit 1
 fi
 
@@ -37,7 +37,7 @@ BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
 
 # download latest version of ur-money-queue-processor code
 if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
-  if [[ "$UR_ENV" == "prod" ]]; then
+  if [[ "$UR_ENV" == "production" ]]; then
     BRANCH=master
   else
     BRANCH=dev
@@ -55,7 +55,7 @@ fi
 
 # download latest version of gur-https-proxy code
 if [[ "$BASE_HOSTNAME" == *"transaction-relay"* ]]; then
-  if [[ "$UR_ENV" == "prod" ]]; then
+  if [[ "$UR_ENV" == "production" ]]; then
     BRANCH=master
   else
     BRANCH=dev
@@ -75,7 +75,7 @@ fi
 cp env.dockerfile.$UR_ENV .env
 PRIVILEGED_UTI_OUTBOUND_PASSWORD=""
 if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
-  if [[ "$UR_ENV" == "prod" ]]; then
+  if [[ "$UR_ENV" == "production" ]]; then
     echo "Please enter passphrase for privileged UTI-outbound address [wQEqfsik6i3CspYqVdh]: "
     read -s PRIVILEGED_UTI_OUTBOUND_PASSWORD
     echo ""
