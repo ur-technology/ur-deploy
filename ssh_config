@@ -52,6 +52,12 @@ Host bootnode-2
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
+Host bootnode-3
+    HostName 159.203.47.139
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
 Host explorer-1
     HostName 159.203.38.110
     User root
