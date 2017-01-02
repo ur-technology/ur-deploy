@@ -14,4 +14,7 @@ else
   echo "ERROR - UNEXPECTED BOOTNODE $BASE_HOSTNAME"
 fi
 
-files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX
+touch ~/ur_data/gur.log
+# nohup ~/files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX </dev/null >> ~/ur_data/gur.log 2>&1 &
+nohup ~/files/gur $BASE_GUR_OPTIONS --nodiscover --maxpeers 5 </dev/null >> ~/ur_data/gur.log 2>&1 &
+tail -f ~/ur_data/gur.log
