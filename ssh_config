@@ -53,7 +53,7 @@ Host bootnode-2
     IdentitiesOnly yes
 
 Host bootnode-3
-    HostName 159.203.47.139
+    HostName 138.197.136.186
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
