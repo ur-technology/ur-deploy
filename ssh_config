@@ -1,3 +1,4 @@
+
 Host dev-bootnode-1
     HostName 138.197.138.155
     User root
@@ -72,6 +73,12 @@ Host miner-1
 
 Host transaction-relay-1
     HostName 138.197.136.94
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host transaction-relay-2
+    HostName 138.197.139.97
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
