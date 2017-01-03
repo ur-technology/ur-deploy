@@ -16,6 +16,5 @@ else
 fi
 
 touch ~/ur_data/gur.log
-# nohup ~/files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX </dev/null >> ~/ur_data/gur.log 2>&1 &
-# nohup ~/files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX --nodiscover --maxpeers 5 </dev/null >> ~/ur_data/gur.log 2>&1 &
+nohup ~/files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX </dev/null >> ~/ur_data/gur.log 2>&1 &
 tail -f ~/ur_data/gur.log
