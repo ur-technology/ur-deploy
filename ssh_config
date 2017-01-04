@@ -72,7 +72,7 @@ Host miner-1
     IdentitiesOnly yes
 
 Host transaction-relay-1
-    HostName 138.197.136.94
+    HostName 159.203.34.231
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
