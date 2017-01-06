@@ -88,8 +88,8 @@ PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed 
 echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
 
 apt-get install -y wget unzip
-wget --quiet https://github.com/ur-technology/go-ur/releases/download/0.0.2/gur-0.0.2-linux.zip && \
-  unzip -d files gur-0.0.2-linux.zip gur-linux-amd64 &&
+wget --quiet https://github.com/ur-technology/go-ur/releases/download/0.0.2a/gur-linux.zip && \
+  unzip -d files gur-linux.zip gur-linux-amd64 &&
   mv files/gur-linux-amd64 files/gur
 # git clone https://github.com/ur-technology/go-ur.git; make -C go-ur gur-linux-amd64; cp go-ur/build/bin/gur-linux-amd64 files/gur
 
