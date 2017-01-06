@@ -42,6 +42,48 @@ services:
       - "19595:19595"
       - "19595:19595/udp"
 
+  bootnode-1a:
+    container_name: bootnode-1a
+    hostname: bootnode-1a
+    build:
+      context: .
+      dockerfile: ./gur.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
+    command: files/bootnode.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"
+
+  bootnode-2a:
+    container_name: bootnode-2a
+    hostname: bootnode-2a
+    build:
+      context: .
+      dockerfile: ./gur.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
+      - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
+    command: files/bootnode.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "19595:19595"
+      - "19595:19595/udp"
+
   bootnode-3:
     container_name: bootnode-3
     hostname: bootnode-3

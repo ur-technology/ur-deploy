@@ -13,6 +13,7 @@ elif [[ "$BASE_HOSTNAME" == "bootnode-3" ]]; then
   NODEKEYHEX=$BOOTNODE_3_NODEKEYHEX
 else
   echo "ERROR - UNEXPECTED BOOTNODE $BASE_HOSTNAME"
+  exit 0
 fi
 
 touch ~/ur_data/gur.log
