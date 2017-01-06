@@ -11,7 +11,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/bootnode.sh
     volumes:
@@ -32,7 +31,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/bootnode.sh
     volumes:
@@ -53,7 +51,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/bootnode.sh
     volumes:
@@ -74,7 +71,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/explorer.sh
     volumes:
@@ -95,7 +91,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/miner.sh
     volumes:
@@ -114,7 +109,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/miner.sh
     volumes:
@@ -133,7 +127,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/transaction-relay.sh
     volumes:
@@ -156,7 +149,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - EXPLORER_1_PUBLIC_IP=${EXPLORER_1_PUBLIC_IP}
     command: files/transaction-relay.sh
     volumes:
@@ -179,7 +171,6 @@ services:
       - UR_NETWORK_ID=${UR_NETWORK_ID}
       - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
-      - BOOTNODE_3_PUBLIC_IP=${BOOTNODE_3_PUBLIC_IP}
       - PRIVILEGED_UTI_OUTBOUND_PASSWORD=${PRIVILEGED_UTI_OUTBOUND_PASSWORD}
     command: files/identifier.sh
     volumes:
