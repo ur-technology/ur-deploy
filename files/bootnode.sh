@@ -5,15 +5,13 @@ set -eo pipefail
 
 BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
 
-if [[ "$BASE_HOSTNAME" == "bootnode-1" ]]; then
+if [[ "$BASE_HOSTNAME" == "bootnode-1a" ]]; then
   NODEKEYHEX=$BOOTNODE_1_NODEKEYHEX
-elif [[ "$BASE_HOSTNAME" == "bootnode-2" ]]; then
+elif [[ "$BASE_HOSTNAME" == "bootnode-2a" ]]; then
   NODEKEYHEX=$BOOTNODE_2_NODEKEYHEX
-elif [[ "$BASE_HOSTNAME" == "bootnode-3" ]]; then
-  NODEKEYHEX=$BOOTNODE_3_NODEKEYHEX
 else
   echo "ERROR - UNEXPECTED BOOTNODE $BASE_HOSTNAME"
-  exit 0
+  exit 1
 fi
 
 touch ~/ur_data/gur.log
