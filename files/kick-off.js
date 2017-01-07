@@ -9,7 +9,7 @@ var kickOffOldClients = function() {
       count++;
     }
   }
-  console.log("removed " + count + "peers");
+  console.log("removed " + count + " peers");
 }
 kickOffOldClients();
 
