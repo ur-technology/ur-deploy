@@ -16,4 +16,5 @@ fi
 
 touch ~/ur_data/gur.log
 nohup ~/files/gur $BASE_GUR_OPTIONS --nodekeyhex $NODEKEYHEX </dev/null >> ~/ur_data/gur.log 2>&1 &
+nohup ~/files/kick-off.sh > ~/kick-off.log 2>&1 &
 tail -f ~/ur_data/gur.log
