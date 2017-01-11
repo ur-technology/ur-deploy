@@ -71,18 +71,6 @@ Host bootnode-2a
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host bootnode-1b
-    HostName 46.101.156.128
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host bootnode-2b
-    HostName 138.68.79.154
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
 Host explorer-1
     HostName 159.203.38.110
     User root

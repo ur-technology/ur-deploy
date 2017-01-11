@@ -35,12 +35,12 @@ echo "starting local instance of gur for testing purposes..."
 startTestGurInstance
 
 echo
-echo "***BOOTNODE-1b"
-getGurPeers bootnode-1b
+echo "***BOOTNODE-1a"
+getGurPeers bootnode-1a
 
 echo
-echo "***BOOTNODE-2b"
-getGurPeers bootnode-2b
+echo "***BOOTNODE-2a"
+getGurPeers bootnode-2a
 
 echo
 echo "***EXPLORER-1"
