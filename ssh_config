@@ -1,4 +1,3 @@
-
 Host dev-bootnode-1
     HostName 138.197.138.155
     User root
@@ -41,24 +40,6 @@ Host dev-identifier-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host bootnode-1
-    HostName 159.203.14.117
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host bootnode-2
-    HostName 159.203.36.102
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host bootnode-3
-    HostName 138.197.136.186
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
 Host bootnode-1a
     HostName 159.203.44.174
     User root
@@ -73,12 +54,6 @@ Host bootnode-2a
 
 Host explorer-1
     HostName 159.203.38.110
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host miner-1
-    HostName 138.197.128.43
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
