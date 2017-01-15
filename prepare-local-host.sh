@@ -36,7 +36,7 @@ cd ur-deploy
 BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
 
 # download latest version of ur-money-queue-processor code
-if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
+if [[ "$BASE_HOSTNAME" == *"queue-processor"* || "$BASE_HOSTNAME" == *"transaction-importer"* || "$BASE_HOSTNAME" == *"identifier"* ]]; then
   if [[ "$UR_ENV" == "production" ]]; then
     BRANCH=master
   else
