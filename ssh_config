@@ -75,3 +75,33 @@ Host identifier-1
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
+
+Host transaction-importer-1
+    HostName 138.197.142.149
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host transaction-importer-2
+    HostName 138.197.142.151
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host transaction-importer-3
+    HostName 138.197.142.177
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host transaction-importer-4
+    HostName 138.197.142.213
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
+
+Host transaction-importer-5
+    HostName 138.197.129.132
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
