@@ -19,15 +19,18 @@ sleep 60
 
 cd ~/ur-money-queue-processor
 if [[ "$UR_ENV" == "production" ]]; then
-  cp env.production .env
+  cp env.identifier.production .env
 else
-  cp env.staging .env
+  cp env.identifier.staging .env
 fi
+
 PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/\-/ /g')
 echo "PRIVILEGED_UTI_OUTBOUND_PASSWORD=$PRIVILEGED_UTI_OUTBOUND_PASSWORD" >> .env
+
 npm install
 typings install
-# npm run-script debug
-touch ~/ur-money-queue-processor.log
-nohup npm start </dev/null >> ~/ur-money-queue-processor.log 2>&1 &
-tail -f ~/ur-money-queue-processor.log
+
+LOG=~/ur-money-queue-processor/ur-money-queue-processor.log
+touch $LOG
+nohup npm start </dev/null >> $LOG 2>&1 &
+tail -f $LOG

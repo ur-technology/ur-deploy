@@ -165,7 +165,7 @@ services:
     hostname: identifier-1
     build:
       context: .
-      dockerfile: ./identifier.dockerfile
+      dockerfile: ./queue-processor.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
@@ -173,6 +173,101 @@ services:
       - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
       - PRIVILEGED_UTI_OUTBOUND_PASSWORD=${PRIVILEGED_UTI_OUTBOUND_PASSWORD}
     command: files/identifier.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+
+  transaction-importer-1:
+    container_name: transaction-importer-1
+    hostname: transaction-importer-1
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/transaction-importer.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+
+  transaction-importer-2:
+    container_name: transaction-importer-2
+    hostname: transaction-importer-2
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/transaction-importer.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+
+  transaction-importer-3:
+    container_name: transaction-importer-3
+    hostname: transaction-importer-3
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/transaction-importer.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+
+  transaction-importer-4:
+    container_name: transaction-importer-4
+    hostname: transaction-importer-4
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/transaction-importer.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
+
+  transaction-importer-5:
+    container_name: transaction-importer-5
+    hostname: transaction-importer-5
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/transaction-importer.sh
     volumes:
       - ./files:/home/deploy/files
       - /etc/localtime:/etc/localtime:ro
