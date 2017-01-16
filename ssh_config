@@ -105,3 +105,9 @@ Host transaction-importer-5
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
+
+Host phone-auth-1
+    HostName 138.197.141.166
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
