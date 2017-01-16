@@ -293,3 +293,22 @@ services:
     ports:
       - "8080:8080"
       - "5858:5858"
+
+  phone-auth-2:
+    container_name: phone-auth-2
+    hostname: phone-auth-2
+    build:
+      context: .
+      dockerfile: ./queue-processor.dockerfile
+    environment:
+      - UR_ENV=${UR_ENV}
+      - UR_NETWORK_ID=${UR_NETWORK_ID}
+      - BOOTNODE_1_PUBLIC_IP=${BOOTNODE_1_PUBLIC_IP}
+      - BOOTNODE_2_PUBLIC_IP=${BOOTNODE_2_PUBLIC_IP}
+    command: files/phone-auth.sh
+    volumes:
+      - ./files:/home/deploy/files
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "8080:8080"
+      - "5858:5858"
