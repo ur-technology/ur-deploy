@@ -14,7 +14,8 @@ echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
 cd ur-deploy
 BASE_HOSTNAME=$(echo $(hostname) | sed -e 's/^dev\-//')
 if [[ "$BASE_HOSTNAME" == *"bootnode"* && "$UR_ENV" == "staging" ]]; then
-BASE_HOSTNAME=${BASE_HOSTNAME}a
+  BASE_HOSTNAME=${BASE_HOSTNAME}a
+fi
 
 docker-compose up -d --build $BASE_HOSTNAME # NOTE: this will use the .env file created by preapre-local-host.sh
 docker logs $BASE_HOSTNAME
