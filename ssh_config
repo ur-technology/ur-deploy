@@ -10,20 +10,14 @@ Host dev-bootnode-2
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host dev-explorer-1
-    HostName 138.197.134.168
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
 Host dev-miner-1
-    HostName 138.197.134.147
+    HostName 159.203.32.156
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
 Host dev-miner-2
-    HostName 138.197.136.97
+    HostName 159.203.47.134
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
@@ -35,7 +29,7 @@ Host dev-transaction-relay-1
     IdentitiesOnly yes
 
 Host dev-identifier-1
-    HostName 138.197.134.185
+    HostName 159.203.44.98
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
@@ -82,38 +76,8 @@ Host transaction-importer-1
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
 
-Host transaction-importer-2
-    HostName 138.197.142.151
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host transaction-importer-3
-    HostName 138.197.142.177
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host transaction-importer-4
-    HostName 138.197.142.213
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host transaction-importer-5
-    HostName 138.197.129.132
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
 Host phone-auth-1
     HostName 138.197.141.166
-    User root
-    IdentityFile ~/.ssh/id_rsa_ur_capital
-    IdentitiesOnly yes
-
-Host phone-auth-2
-    HostName 159.203.17.16
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
