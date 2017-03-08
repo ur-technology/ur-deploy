@@ -121,7 +121,7 @@ services:
     hostname: transaction-relay-1
     build:
       context: .
-      dockerfile: ./identifier.dockerfile
+      dockerfile: ./queue-processor.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
@@ -143,7 +143,7 @@ services:
     hostname: transaction-relay-2
     build:
       context: .
-      dockerfile: ./identifier.dockerfile
+      dockerfile: ./queue-processor.dockerfile
     environment:
       - UR_ENV=${UR_ENV}
       - UR_NETWORK_ID=${UR_NETWORK_ID}
