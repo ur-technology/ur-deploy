@@ -8,9 +8,9 @@ rm -rf ~/ur-money-queue-processor
 cp -R ~/files/ur-money-queue-processor ~/
 cd ~/ur-money-queue-processor
 if [[ "$UR_ENV" == "production" ]]; then
-  cp env.phone-auth.production .env
+  cp env.auth.production .env
 else
-  cp env.phone-auth.staging .env
+  cp env.auth.staging .env
 fi
 
 npm install
