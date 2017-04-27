@@ -105,3 +105,9 @@ Host phone-auth-1
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
+
+Host phone-auth-2
+    HostName 138.197.142.132
+    User root
+    IdentityFile ~/.ssh/id_rsa_ur_capital
+    IdentitiesOnly yes
