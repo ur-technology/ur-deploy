@@ -21,7 +21,7 @@ cd ~/ur-money-queue-processor
 if [[ "$UR_ENV" == "production" ]]; then
   cp env.identifier.production .env
 else
-  cp env.identifier.staging .env
+  cp env.combined.staging .env
 fi
 
 PRIVILEGED_UTI_OUTBOUND_PASSWORD=$(echo $PRIVILEGED_UTI_OUTBOUND_PASSWORD | sed -e 's/\-/ /g')
