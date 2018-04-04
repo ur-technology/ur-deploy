@@ -71,7 +71,7 @@ Host identifier-1
     IdentitiesOnly yes
 
 Host transaction-importer-1
-    HostName 159.203.3.25
+    HostName 138.197.174.8
     User root
     IdentityFile ~/.ssh/id_rsa_ur_capital
     IdentitiesOnly yes
